@@ -83,10 +83,14 @@ double MainWindow::f_aprox(double x) {
 
 
 
-MainWindow::MainWindow(QWidget *parent)
+MainWindow::MainWindow(double aa, double bb, int nn, QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
+    a=aa;
+    b=bb;
+    n=nn;
+
     ui->setupUi(this);
 
     ui->aLineEdit->setText(QString::number(a));

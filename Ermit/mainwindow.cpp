@@ -137,11 +137,19 @@ void MainWindow::Ermit(double a, double b , int n){
 
 
 
-MainWindow::MainWindow(QWidget *parent)
-    : QMainWindow(parent)
-    , ui(new Ui::MainWindow)
+MainWindow::MainWindow(double aa, double bb, int nn,QWidget *parent): QMainWindow(parent), ui(new Ui::MainWindow)
 {
+    a=aa;
+    b=bb;
+    n=nn;
     ui->setupUi(this);
+
+//    QMenuBar *tool_bar = ui->menubar;
+//    QAction *action;
+
+//    action = tool_bar->addAction ("&Exit", this, SLOT (close ()));
+//    action->setShortcut (QString ("Ctrl+X"));
+
 
     ui->aLineEdit->setText(QString::number(a));
     ui->bLineEdit->setText(QString::number(b));
@@ -151,8 +159,8 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->bLineEdit, &QLineEdit::returnPressed, this, [&]() { b = ui->bLineEdit->text().toDouble(); view = {a, b}; compute_Newton(); });
     connect(ui->nLineEdit, &QLineEdit::returnPressed, this, [&]() { n = ui->nLineEdit->text().toInt(); compute_Newton(); });
 
-    connect(ui->mlt2PushButton, &QPushButton::released, this, [&] { n *= 2; ui->nLineEdit->setText(QString::number(n));compute_Newton(); });
-    connect(ui->div2PushButton, &QPushButton::released, this, [&] { n = (n<=5?n:n/2); ui->nLineEdit->setText(QString::number(n));compute_Newton(); });
+    connect(ui->mlt2PushButton, &QPushButton::released, this, [&]() { n *= 2; ui->nLineEdit->setText(QString::number(n));compute_Newton(); });
+    connect(ui->div2PushButton, &QPushButton::released, this, [&]() { n = (n<=5?n:n/2); ui->nLineEdit->setText(QString::number(n));compute_Newton(); });
 
     ui->functionCheckBox->setChecked(drawFunction);
     ui->approximatedCheckBox->setChecked(drawApproximated);
@@ -189,14 +197,14 @@ MainWindow::~MainWindow() {
 void MainWindow::paintEvent(QPaintEvent *event) {
     Q_UNUSED(event);
     QPainter painter(this);
-    QRectF plotRect = ui->plotWidget->geometry();
+    QRectF plotRect = ui->plotWidget->geometry(); //окно с графиком
     QPair<double, double> fnMinMax = functionMinMax(currentFunction(), view);
     QPair<double, double> apprxMinMax = functionMinMax(std::bind(&MainWindow::f_aprox_polin, this, std::placeholders::_1), view);
     QPair<double, double> minMax = {qMin(fnMinMax.first, apprxMinMax.first),
                                     qMax(fnMinMax.second, apprxMinMax.second)};
 
 
-    QRectF viewRect = {QPointF(view.first, minMax.first), QPointF(view.second, minMax.second)};
+    QRectF viewRect = {QPointF(view.first, minMax.first), QPointF(view.second, minMax.second)}; //границы кординат
 
     QPen axisPen(Qt::red, 0);
     QPen plotPen(Qt::darkMagenta, 0);
