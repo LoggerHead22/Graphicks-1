@@ -143,7 +143,7 @@ MainWindow::MainWindow(double aa, double bb, int nn,QWidget *parent): QMainWindo
     b=bb;
     n=nn;
     ui->setupUi(this);
-
+    menuBar()->addAction("Exit", this, SLOT(close()))->setShortcut(QString("Ctrl+X"));
 //    QMenuBar *tool_bar = ui->menubar;
 //    QAction *action;
 

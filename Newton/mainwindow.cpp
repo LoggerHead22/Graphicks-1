@@ -92,6 +92,7 @@ MainWindow::MainWindow(double aa, double bb, int nn, QWidget *parent)
     n=nn;
 
     ui->setupUi(this);
+    menuBar()->addAction("Exit", this, SLOT(close()))->setShortcut(QString("Ctrl+X"));
 
     ui->aLineEdit->setText(QString::number(a));
     ui->bLineEdit->setText(QString::number(b));
