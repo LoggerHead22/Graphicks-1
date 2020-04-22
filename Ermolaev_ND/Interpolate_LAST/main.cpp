@@ -29,6 +29,7 @@ int main(int argc, char *argv[])
 
 
     MainWindow w(a ,b , n, k);
+    //MainWindow w(-1, 1, 10, 4);
     w.setWindowTitle ("Interpolate 1");
     w.show();
     return app.exec();

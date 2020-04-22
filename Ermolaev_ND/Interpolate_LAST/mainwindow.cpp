@@ -177,8 +177,8 @@ void MainWindow::paintEvent(QPaintEvent *event) {
     }
 
     if (std::abs(minMax.first - minMax.second) < 1e-15) {
-        minMax.first = minMax.first - 1e-14;
-        minMax.second = minMax.second + 1e-14;
+        minMax.first = minMax.first - 1e-15;
+        minMax.second = minMax.second + 1e-15;
     }
 
 //    if (kit == 0) painter.drawText(1200, 40, "Набор = ф-ия + ermit");

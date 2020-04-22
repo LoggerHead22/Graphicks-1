@@ -27,9 +27,9 @@ HEADERS += \
 FORMS += \
     mainwindow.ui
 
-QMAKE_CXXFLAGS += -ffast-math -O3 -funroll-loops -W -Wuninitialized -Wall -Wunused -fsanitize=address -mfpmath=sse -fstack-protector-all -g   -Wextra -Wunused -Wcast-align -Werror -pedantic -pedantic-errors -Wfloat-equal -Wpointer-arith -Wformat-security -Wmissing-format-attribute -Wformat=1 -Wwrite-strings -Wcast-align -Wno-long-long -Woverloaded-virtual -Wnon-virtual-dtor -Wcast-qual -Wno-suggest-attribute=format
+QMAKE_CXXFLAGS += -ffast-math -O3 -funroll-loops -W -Wuninitialized -Wall -Wunused -fsanitize=address -mfpmath=sse -fstack-protector-all -g  -Werror -Wextra -Wunused -Wcast-align  -pedantic -pedantic-errors -Wfloat-equal -Wpointer-arith -Wformat-security -Wmissing-format-attribute -Wformat=1 -Wwrite-strings -Wcast-align -Wno-long-long -Woverloaded-virtual -Wnon-virtual-dtor -Wcast-qual -Wno-suggest-attribute=format
 
-TARGET = a.out
+#TARGET = a.out
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
